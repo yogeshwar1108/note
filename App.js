@@ -1,21 +1,22 @@
-import React  from 'react';
-import Addtodo from './components/Addtodo';
-import Todolist from './components/Todolist';
-import Listoftodo from './components/Listoftodo';
+import React, { useState } from "react";
+import Addtodo from "./components/Addtodo";
+import Todolist from "./components/Todolist";
 
-
-function App() {
+function ParentComponent() {
+  const [todos, setTodos] = useState([]);
 
   return (
-    <div className='row' >
-      <div className='container'> 
-      <div className="col-sm-4 border border-primary p-5"><Addtodo /></div>
-      <div className="col-sm-4"><Todolist  /></div>
-      <div className="col-sm-4"><Listoftodo/></div>
-
-    </div>
+    <div className="container-fluid m-2 text-center">
+      <div className="row">
+        <div className="col sm-4">
+          <Addtodo setoutput={setTodos}  className="text-center"/>
+          </div>
+          <div className="col sm-4">
+          <Todolist output={todos} setoutput={setTodos} />
+        </div>
+      </div>
     </div>
   );
 }
 
-export default App;
+export default ParentComponent;
